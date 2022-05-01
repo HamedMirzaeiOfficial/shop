@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}تسویه حساب{% endblock %}
+{% block content %}
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>چک کردن نهایی</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+
+
+<section class="checkout_area section_padding">
+    <div class="container">
+      <div class="returning_customer">
+        <div class="check_title">
+          <h2>
+            قبلا خرید داشته اید؟
+            <a href="#">برای ورود اینجا کلیک کنید</a>
+          </h2>
+        </div>
+        <p>
+            اگر تجربه خرید با ما را داشته اید، لطفا جزئیات آن را در کادر زیر وارد کنید. اگر اولین تجربه خرید شماست، به قسمت ارسال کالا و پرداخت بروید.
+        </p>
+        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+          <div class="col-md-6 form-group p_star">
+            <input type="text" class="form-control" id="name" name="name" value=" " />
+            <span class="placeholder" data-placeholder="نام کاربری یا ایمیل"></span>
+          </div>
+          <div class="col-md-6 form-group p_star">
+            <input type="password" class="form-control" id="password" name="password" value="" />
+            <span class="placeholder" data-placeholder="رمز عبور"></span>
+          </div>
+          <div class="col-md-12 form-group">
+            <button type="submit" value="submit" class="btn_3">
+              ورود
+            </button>
+            <div class="creat_account">
+              <input type="checkbox" id="f-option" name="selector" />
+              <label for="f-option">مرا به خاطر بسپار</label>
+            </div>
+            <a class="lost_pass" href="#">آیا رمز عبور خود را فراموش کرده اید؟</a>
+          </div>
+        </form>
+      </div>
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>سفارش شما</h2>
+
+                {% for item in cart %}
+                     <div>
+                        <span>{{ item.product.name }}</span>
+                        <span>{{ item.quantity }}   عدد</span>
+                        <span>قیمت کل:    {{ item.total_price }}     </span>
+                     </div>
+                {% endfor %}
+              <hr>
+              <div style="margin-top:30px">
+                <div>مجموع صورت حساب: {{ cart.get_total_price }}</div>
+              <ul class="list list_2">
+
+                <li>
+                 <div>تخفیف:  {{ cart.get_discount }}</div>
+                  <a href="#">
+                    <span> مجموع صورت حساب بعد از اعمال تخفیف: {{ cart.get_total_price_after_discount }}</span>
+                  </a>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+
+
+  <div>اطلاعات خود را وارد کنید:</div>
+    <form method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="سفارش"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}
