@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'coupon.apps.CouponConfig',
     'order.apps.OrderConfig',
     'payment.apps.PaymentConfig',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,14 @@ BRIANTREE_CONF = braintree.Configuration(
     "ykkcxcc38z6z7j3z",
     "a27560808201ad6b55a00830607e244c"
 )
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}

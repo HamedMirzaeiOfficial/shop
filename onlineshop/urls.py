@@ -29,6 +29,8 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('api/', include('api.urls')),
+    path('api/auth/', include('rest_framework.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
