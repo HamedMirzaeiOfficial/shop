@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
+import os, config
 from pathlib import Path
 import braintree
 
@@ -22,13 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o7r*h&ak(=+=$&7+juoo)m(fv4naszm#uywmx8ritt7g77%3+7'
+SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.DEBUG
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = config.ALLOWED_HOSTS
 
 # Application definition
 

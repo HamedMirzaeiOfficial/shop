@@ -27,12 +27,6 @@ class ProductListView(ListView):
         return context
 
 
-# class ProductDetail(DetailView):
-#     model = Product
-#     template_name = 'shop/cart_detail.html'
-#     context_object_name = 'product'
-
-
 class ProductDetailView(View):
 
     def get(self, request, *args, **kwargs):
