@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 import braintree
 from django.conf import settings
 from order.models import Order
-
+from django.contrib.auth.decorators import login_required
 
 # instantiate Braintree payment gateway
 gateway = braintree.BraintreeGateway(settings.BRIANTREE_CONF)
 
 
+@login_required
 def payment_process(request):
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
